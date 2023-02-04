@@ -99,7 +99,7 @@ class Profile extends StatelessWidget {
                 thickness: 3,
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
               const ReadData(),
             ],
