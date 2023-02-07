@@ -9,8 +9,6 @@ import 'package:shop/widgets/reuse_textfield.dart';
 class CreateAccount extends StatelessWidget {
   CreateAccount({Key? key}) : super(key: key);
   final createcontroller = Get.put(CreateController());
-  final datacreatecontroller = Get.put(DataCreateController());
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop/controllers/data_create_controller.dart';
-import 'package:shop/controllers/image_controller.dart';
 import 'package:shop/screens/products.dart';
 import 'package:shop/widgets/reuse_textfield.dart';
 
 class AddProducts extends StatelessWidget {
   AddProducts({Key? key}) : super(key: key);
-  final datacreatecontroller = Get.find<DataCreateController>();
-  final imagecontroller = ImageController();
+  final datacreatecontroller = DataCreateController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -45,7 +43,7 @@ class AddProducts extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  imagecontroller.selectImage();
+                  datacreatecontroller.selectImage();
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -61,10 +59,10 @@ class AddProducts extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        Obx((() => (imagecontroller.picture.value == true)
+                        Obx((() => (datacreatecontroller.picture.value == true)
                             ? Expanded(
                                 child: Image.file(
-                                imagecontroller.Productpic.value,
+                                datacreatecontroller.Productpic.value,
                                 fit: BoxFit.cover,
                               ))
                             : Container())),
@@ -91,7 +89,7 @@ class AddProducts extends StatelessWidget {
                       return const AllProducts();
                     })),
                   );
-                  imagecontroller.uploadImage();
+                  datacreatecontroller.uploadImage();
                   datacreatecontroller.createData();
                   datacreatecontroller.productname.clear();
                   datacreatecontroller.productdescription.clear();

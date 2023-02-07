@@ -16,7 +16,11 @@ class AllProducts extends StatelessWidget {
         body: Column(
           // ignore: prefer_const_literals_to_create_immutables
           children: [
-            const Expanded(child: ReadData()),
+            const Expanded(
+                child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: ReadData(),
+            )),
             const BotomNavigationBar(),
           ],
         ),

@@ -9,7 +9,7 @@ class ReadData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection("Store").snapshots(),
+        stream: FirebaseFirestore.instance.collection("Storee").snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return StaggeredGridView.countBuilder(
@@ -79,10 +79,4 @@ class ReadData extends StatelessWidget {
           }
         });
   }
-}        
-/*ListView.builder(
-                shrinkWrap: true,
-                physics: const ScrollPhysics(),
-                itemCount: snapshot.data!.docs.length,
-                itemBuilder: (context, index) {
-                  QueryDocumentSnapshot x = snapshot.data!.docs[index];*/
+}
