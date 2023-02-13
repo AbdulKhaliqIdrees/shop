@@ -89,7 +89,7 @@ class AddProducts extends StatelessWidget {
                       return const Products();
                     })),
                   );
-                  await datacreatecontroller.uploadImage();
+                  datacreatecontroller.uploadImage();
                   await datacreatecontroller.createData();
                   datacreatecontroller.productname.clear();
                   datacreatecontroller.productdescription.clear();
