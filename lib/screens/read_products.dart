@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:shop/screens/product_details.dart';
 
-class ReadData extends StatelessWidget {
-  const ReadData({Key? key}) : super(key: key);
+class ReadProducts extends StatelessWidget {
+  const ReadProducts({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection("Storee").snapshots(),
+        stream: FirebaseFirestore.instance.collection("Shopp").snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return StaggeredGridView.countBuilder(

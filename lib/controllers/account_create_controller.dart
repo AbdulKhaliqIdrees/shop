@@ -20,7 +20,7 @@ class CreateController extends GetxController {
       } else {
         await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email, password: password);
-        Get.to(const AllProducts());
+        Get.to(const Products());
       }
     } catch (e) {
       // ignore: avoid_print

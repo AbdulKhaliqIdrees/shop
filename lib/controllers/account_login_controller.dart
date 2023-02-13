@@ -20,7 +20,7 @@ class LoginController extends GetxController {
       } else {
         await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: email, password: password);
-        Get.to(const AllProducts());
+        Get.to(const Products());
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

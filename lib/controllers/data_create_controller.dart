@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,13 +16,16 @@ class DataCreateController extends GetxController {
   // ignore: non_constant_identifier_names
   var Productpic = File('').obs;
   var picture = false.obs;
-  String id = DateTime.now().millisecondsSinceEpoch.toString();
   createData() async {
     try {
-      await FirebaseFirestore.instance.collection("Storee").doc(id).set({
+      String id = DateTime.now().millisecondsSinceEpoch.toString();
+      String uid = FirebaseAuth.instance.currentUser!.uid;
+      await FirebaseFirestore.instance.collection("Shopp").doc(id).set({
         "Name": productname.text,
         "Description": productdescription.text,
         "Price": productprice.text,
+        "Image": downloadurl,
+        "uid": uid,
       });
     } catch (e) {
       // ignore: avoid_print
@@ -47,18 +51,17 @@ class DataCreateController extends GetxController {
     }
   }
 
-  uploadImage() async {
+  // ignore: non_constant_identifier_names
+  Future uploadImage() async {
     try {
+      String id = DateTime.now().millisecondsSinceEpoch.toString();
       UploadTask uploadtask = FirebaseStorage.instance
           .ref()
-          .child("Storee")
+          .child("Shopp")
           .child(id)
           .putFile(Productpic.value);
       TaskSnapshot taskSnapshot = await uploadtask;
       downloadurl = await taskSnapshot.ref.getDownloadURL();
-      FirebaseFirestore.instance.collection("Storee").add({
-        "Image": downloadurl,
-      });
     } catch (e) {
       // ignore: avoid_print
       print(e);

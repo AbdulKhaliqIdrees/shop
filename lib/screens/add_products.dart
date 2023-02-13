@@ -82,15 +82,15 @@ class AddProducts extends StatelessWidget {
               MaterialButton(
                 color: Colors.yellow,
                 child: const Text("Add Product"),
-                onPressed: () {
+                onPressed: () async {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: ((context) {
-                      return const AllProducts();
+                      return const Products();
                     })),
                   );
-                  datacreatecontroller.uploadImage();
-                  datacreatecontroller.createData();
+                  await datacreatecontroller.uploadImage();
+                  await datacreatecontroller.createData();
                   datacreatecontroller.productname.clear();
                   datacreatecontroller.productdescription.clear();
                   datacreatecontroller.productprice.clear();

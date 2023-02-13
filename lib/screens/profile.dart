@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop/screens/read_data.dart';
+import 'package:shop/screens/read_profile.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -104,7 +104,7 @@ class Profile extends StatelessWidget {
             // ignore: prefer_const_constructors
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: const ReadData(),
+              child: const ReadProfile(),
             ),
           ],
         ),

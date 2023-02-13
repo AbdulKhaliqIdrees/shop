@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shop/screens/botom_navigation_bar.dart';
-import 'package:shop/screens/read_data.dart';
+import 'package:shop/screens/read_products.dart';
 
-class AllProducts extends StatelessWidget {
-  const AllProducts({Key? key}) : super(key: key);
+class Products extends StatelessWidget {
+  const Products({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class AllProducts extends StatelessWidget {
             const Expanded(
                 child: Padding(
               padding: EdgeInsets.all(8.0),
-              child: ReadData(),
+              child: ReadProducts(),
             )),
             const BotomNavigationBar(),
           ],
