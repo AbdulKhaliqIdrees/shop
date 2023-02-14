@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:shop/screens/product_details.dart';
+import 'package:shop/screens/product_details_screen.dart';
 
 class ReadProducts extends StatelessWidget {
   const ReadProducts({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class ReadProducts extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: ((context) {
-                          return const ProductDetails();
+                          return ProductDetails(x);
                         })),
                       );
                     },
