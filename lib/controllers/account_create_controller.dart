@@ -6,7 +6,8 @@ import 'package:shop/screens/products.dart';
 class CreateController extends GetxController {
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
-  void createAccount() async {
+
+  void createAccount(BuildContext context) async {
     try {
       String email = emailcontroller.text.trim();
       String password = passwordcontroller.text.trim();
@@ -17,10 +18,25 @@ class CreateController extends GetxController {
           backgroundColor: Colors.red,
           snackPosition: SnackPosition.BOTTOM,
         );
+      } else if (password.length < 8) {
+        Get.snackbar(
+          "Error!",
+          "Password must be 8 characters",
+          backgroundColor: Colors.red,
+          snackPosition: SnackPosition.BOTTOM,
+        );
       } else {
-        await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email, password: password);
-        Get.to(const Products());
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        // Get.delete
+
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => const Products(),
+          ),
+        );
       }
     } catch (e) {
       // ignore: avoid_print

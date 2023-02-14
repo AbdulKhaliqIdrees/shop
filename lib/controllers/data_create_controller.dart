@@ -1,11 +1,13 @@
 import 'dart:developer';
 import 'dart:io';
+import 'package:ars_dialog/ars_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shop/widgets/loading_dialog.dart';
 
 class DataCreateController extends GetxController {
   TextEditingController productname = TextEditingController();
@@ -16,7 +18,11 @@ class DataCreateController extends GetxController {
   // ignore: non_constant_identifier_names
   var Productpic = File('').obs;
   var picture = false.obs;
-  createData() async {
+
+  Future<void> createData(BuildContext context) async {
+    final dialog = loadingDialog(context);
+    dialog.show();
+
     try {
       String id = DateTime.now().millisecondsSinceEpoch.toString();
       String uid = FirebaseAuth.instance.currentUser!.uid;
@@ -27,7 +33,10 @@ class DataCreateController extends GetxController {
         "Image": downloadurl,
         "uid": uid,
       });
+
+      dialog.dismiss();
     } catch (e) {
+      dialog.dismiss();
       // ignore: avoid_print
       print(e);
     }
@@ -51,8 +60,10 @@ class DataCreateController extends GetxController {
     }
   }
 
-  // ignore: non_constant_identifier_names
-  Future uploadImage() async {
+  Future<void> uploadImage(BuildContext context) async {
+    final dialog = loadingDialog(context);
+    dialog.show();
+
     try {
       String id = DateTime.now().millisecondsSinceEpoch.toString();
       UploadTask uploadtask = FirebaseStorage.instance
@@ -62,7 +73,9 @@ class DataCreateController extends GetxController {
           .putFile(Productpic.value);
       TaskSnapshot taskSnapshot = await uploadtask;
       downloadurl = await taskSnapshot.ref.getDownloadURL();
+      dialog.dismiss();
     } catch (e) {
+      dialog.dismiss();
       // ignore: avoid_print
       print(e);
     }

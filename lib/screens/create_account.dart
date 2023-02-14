@@ -8,7 +8,9 @@ import 'package:shop/widgets/reuse_textfield.dart';
 
 class CreateAccount extends StatelessWidget {
   CreateAccount({Key? key}) : super(key: key);
-  final createcontroller = Get.put(CreateController());
+
+  final createController = CreateController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -21,7 +23,7 @@ class CreateAccount extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: ReuseTextfield(createcontroller.emailcontroller, "Email"),
+              child: ReuseTextfield(createController.emailcontroller, "Email"),
             ),
             const SizedBox(
               height: 15,
@@ -38,7 +40,7 @@ class CreateAccount extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: ReuseTextfield(
-                  createcontroller.passwordcontroller, "Password"),
+                  createController.passwordcontroller, "Password"),
             ),
             const SizedBox(
               height: 15,
@@ -69,9 +71,7 @@ class CreateAccount extends StatelessWidget {
                   color: Colors.yellow,
                   child: const Text("Create Account"),
                   onPressed: () {
-                    createcontroller.createAccount();
-                    createcontroller.emailcontroller.clear();
-                    createcontroller.passwordcontroller.clear();
+                    createController.createAccount(context);
                   },
                 ),
                 MaterialButton(
