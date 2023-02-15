@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:shop/controllers/account_create_controller.dart';
-import 'package:shop/controllers/data_create_controller.dart';
-import 'package:shop/screens/login_account.dart';
-import 'package:shop/screens/reset_password_screen.dart';
-import 'package:shop/widgets/reuse_textfield.dart';
+import 'package:shop/controllers/account_create_controller/account_create_controller.dart';
+import 'package:shop/screens/login_account/login_account.dart';
+import 'package:shop/screens/reset_password_screen/reset_password_screen.dart';
+import 'package:shop/widgets/reuse_textfield/reuse_textfield.dart';
 
 class CreateAccount extends StatelessWidget {
   CreateAccount({Key? key}) : super(key: key);

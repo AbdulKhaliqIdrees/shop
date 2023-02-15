@@ -1,13 +1,12 @@
 import 'dart:developer';
 import 'dart:io';
-import 'package:ars_dialog/ars_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:shop/widgets/loading_dialog.dart';
+import 'package:shop/widgets/loading_dialog/loading_dialog.dart';
 
 class DataCreateController extends GetxController {
   TextEditingController productname = TextEditingController();
@@ -42,7 +41,7 @@ class DataCreateController extends GetxController {
     }
   }
 
-  selectImage() async {
+  void selectImage() async {
     try {
       XFile? selectedimage =
           await ImagePicker().pickImage(source: ImageSource.gallery);

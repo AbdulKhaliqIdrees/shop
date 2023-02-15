@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shop/screens/create_account.dart';
 import 'package:shop/screens/splash/splash.dart';
 
 Future<void> main() async {

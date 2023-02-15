@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shop/screens/add_products.dart';
-import 'package:shop/screens/profile.dart';
+import 'package:shop/screens/add_products/add_products.dart';
+import 'package:shop/screens/profile/profile.dart';
 
 class BotomNavigationBar extends StatelessWidget {
   const BotomNavigationBar({Key? key}) : super(key: key);

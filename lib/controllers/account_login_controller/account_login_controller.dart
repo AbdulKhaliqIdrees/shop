@@ -1,13 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shop/screens/products.dart';
+import 'package:shop/screens/products/products.dart';
 
-class CreateController extends GetxController {
+class LoginController extends GetxController {
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
-
-  void createAccount(BuildContext context) async {
+  void loginAccount() async {
     try {
       String email = emailcontroller.text.trim();
       String password = passwordcontroller.text.trim();
@@ -18,29 +17,27 @@ class CreateController extends GetxController {
           backgroundColor: Colors.red,
           snackPosition: SnackPosition.BOTTOM,
         );
-      } else if (password.length < 8) {
+      } else {
+        await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: email, password: password);
+        Get.to(const Products());
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
         Get.snackbar(
           "Error!",
-          "Password must be 8 characters",
+          "No User found for that email!",
           backgroundColor: Colors.red,
           snackPosition: SnackPosition.BOTTOM,
         );
-      } else {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: email,
-          password: password,
-        );
-        // Get.delete
-
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (_) => const Products(),
-          ),
+      } else if (e.code == 'wrong-password') {
+        Get.snackbar(
+          "Error!",
+          "Password is wrong for that user!",
+          backgroundColor: Colors.red,
+          snackPosition: SnackPosition.BOTTOM,
         );
       }
-    } catch (e) {
-      // ignore: avoid_print
-      print(e);
     }
   }
 }

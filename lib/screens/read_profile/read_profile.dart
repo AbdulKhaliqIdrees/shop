@@ -1,16 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:shop/screens/product_details_screen.dart';
+import 'package:shop/screens/product_detail_screen/product_details_screen.dart';
 
-class ReadProducts extends StatelessWidget {
-  const ReadProducts({Key? key}) : super(key: key);
+class ReadProfile extends StatelessWidget {
+  const ReadProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection("Shopp").snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection("Shopp")
+            .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+            .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return StaggeredGridView.countBuilder(
@@ -40,16 +44,16 @@ class ReadProducts extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          Expanded(
-                            child: CachedNetworkImage(
-                              imageUrl: x['Image'],
-                            ),
-                          ),
                           // Expanded(
                           //   child: Image(
                           //     image: NetworkImage(x["Image"]),
                           //   ),
                           // ),
+                          Expanded(
+                            child: CachedNetworkImage(
+                              imageUrl: x['Image'],
+                            ),
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [

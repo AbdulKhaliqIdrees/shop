@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shop/controllers/reset_password_controller.dart';
-import 'package:shop/widgets/reuse_textfield.dart';
+import 'package:shop/controllers/reset_password_controller/reset_password_controller.dart';
+import 'package:shop/widgets/reuse_textfield/reuse_textfield.dart';
 
 class ReSetPassWord extends StatelessWidget {
   ReSetPassWord({Key? key}) : super(key: key);

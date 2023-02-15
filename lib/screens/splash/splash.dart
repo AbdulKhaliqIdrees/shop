@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shop/screens/create_account.dart';
-import 'package:shop/screens/products.dart';
+import 'package:shop/screens/create_account/create_account.dart';
+import 'package:shop/screens/products/products.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -37,6 +37,19 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SafeArea(
+      child: Container(
+        color: Colors.yellow,
+        child: const Center(
+          child: Text(
+            "WELCOME",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 80,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

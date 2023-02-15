@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shop/screens/botom_navigation_bar.dart';
-import 'package:shop/screens/read_products.dart';
+import 'package:shop/screens/botom_navigation_bar/botom_navigation_bar.dart';
+import 'package:shop/screens/read_products/read_products.dart';
 
 class Products extends StatelessWidget {
   const Products({Key? key}) : super(key: key);

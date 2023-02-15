@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shop/controllers/account_login_controller.dart';
-import 'package:shop/widgets/reuse_textfield.dart';
+import 'package:shop/controllers/account_login_controller/account_login_controller.dart';
+import 'package:shop/widgets/reuse_textfield/reuse_textfield.dart';
 
 class LoginAccount extends StatelessWidget {
   LoginAccount({Key? key}) : super(key: key);

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shop/controllers/data_create_controller.dart';
-import 'package:shop/screens/products.dart';
-import 'package:shop/widgets/reuse_textfield.dart';
+import 'package:shop/widgets/reuse_textfield/reuse_textfield.dart';
+
+import '../../controllers/data_create_controller/data_create_controller.dart';
 
 class AddProducts extends StatelessWidget {
   AddProducts({Key? key}) : super(key: key);
@@ -84,7 +84,9 @@ class AddProducts extends StatelessWidget {
                 child: const Text("Add Product"),
                 onPressed: () async {
                   await datacreatecontroller.uploadImage(context);
+                  // ignore: use_build_context_synchronously
                   await datacreatecontroller.createData(context);
+                  // ignore: use_build_context_synchronously
                   Navigator.of(context).pop();
                 },
               ),

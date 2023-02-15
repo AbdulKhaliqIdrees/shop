@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shop/screens/create_account.dart';
+import 'package:shop/screens/create_account/create_account.dart';
 
 class ResetController extends GetxController {
   TextEditingController resetcontroller = TextEditingController();
